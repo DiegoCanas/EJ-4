@@ -8,7 +8,10 @@ pipeline {
         }
 
         stage ('Instalacion de dependencias'){
-            sh 'npm install'
+            steps{
+                sh 'npm install'
+            }
+
         }
 
         stage ('Linteo'){
@@ -20,7 +23,7 @@ pipeline {
         }
 
         stage ('Build'){
-            
+
         }
     }
 }
