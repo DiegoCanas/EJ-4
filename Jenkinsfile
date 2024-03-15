@@ -53,7 +53,7 @@ pipeline {
             steps{
                 script {
                     echo ('hols')
-                    sh ("docker image build --no-cache -f ./dockerfile -t service:latest .")
+                    sh ("docker image build --platform linux/amd64 -f ./dockerfile -t service:latest .")
                 }
                 
             }
