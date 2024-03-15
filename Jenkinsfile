@@ -3,12 +3,13 @@ pipeline {
         registry = "diegocanas/server"
         registryCredential = 'dockerhub'
         dockerImage = ''
+        dockerT = 'docker'
     }
     agent any
 
     tools {
         nodejs "node"
-        dockerTool "docker"
+        dockerTool dockerT
     }
 
     stages {
