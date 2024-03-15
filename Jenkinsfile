@@ -1,4 +1,9 @@
 pipeline {
+    environment{
+        registry = "diegocanas/server"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+    }
     agent any
 
     tools {nodejs "node"}
@@ -42,9 +47,31 @@ pipeline {
 
         stage ('🔨Build'){
             steps{
-                echo("hola")
+                script {
+                    echo ('hola')
+                }
+                
             }
 
         }
+
+        stage ('Creación de la imagen docker'){
+            steps{
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
+
+        stage ('Subida de la imagen al registry'){
+            steps{
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                }
+            }
+        }
+
+
     }
 }
