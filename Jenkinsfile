@@ -6,7 +6,10 @@ pipeline {
     }
     agent any
 
-    tools {nodejs "node"}
+    tools {
+        nodejs "node"
+        dockerTool 'docker'
+    }
 
     stages {
         stage ('🏁Checkout'){
