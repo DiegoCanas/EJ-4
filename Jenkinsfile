@@ -15,7 +15,7 @@ pipeline {
         stage ('⬇️Instalacion de dependencias'){
             steps{
                 script {
-                    sh 'sudo apt-get update && sudo apt-get install -y nodejs npm'
+                    sh 'apt-get update && apt-get install -y nodejs npm'
                     sh 'node -v'
                     sh 'npm -v'
                     sh 'npm install'
