@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage ('Checkout'){
+        stage ('🏁Checkout'){
             steps{
                 script{
                     checkout([$class: 'GitSCM', 
@@ -12,28 +12,33 @@ pipeline {
             }
         }
 
-        stage ('Instalacion de dependencias'){
+        stage ('⬇️Instalacion de dependencias'){
             steps{
-                sh 'npm install'
+                script {
+                    sh 'sudo apt-get update && sudo apt-get install -y nodejs npm'
+                    sh 'node -v'
+                    sh 'npm -v'
+                    sh 'npm install'
+                }                
             }
 
         }
 
-        stage ('Linteo'){
-            steps{
-                echo("hola")
-            }
-
-        }
-
-        stage ('Test'){
+        stage ('🥽Linteo'){
             steps{
                 echo("hola")
             }
 
         }
 
-        stage ('Build'){
+        stage ('🧪Test'){
+            steps{
+                echo("hola")
+            }
+
+        }
+
+        stage ('🔨Build'){
             steps{
                 echo("hola")
             }
