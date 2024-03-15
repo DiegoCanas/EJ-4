@@ -53,7 +53,7 @@ pipeline {
             steps{
                 script {
                     echo ('hola')
-                    docker.build('server:latest')
+                    sh ("docker image build -f ./dockerfile -t service:latest")
                 }
                 
             }
