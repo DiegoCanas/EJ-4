@@ -38,6 +38,7 @@ pipeline {
         stage ('🥽Linteo'){
             steps{
                 echo("Linting...")
+                sh('whoami')
             }
 
         }
@@ -45,7 +46,6 @@ pipeline {
         stage ('🧪Test'){
             steps{
                 sh 'npm test'
-                sh('whoami')
             }
 
         }
