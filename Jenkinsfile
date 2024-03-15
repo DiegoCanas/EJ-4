@@ -15,14 +15,23 @@ pipeline {
         }
 
         stage ('Linteo'){
+            steps{
+
+            }
 
         }
 
         stage ('Test'){
+            steps{
+
+            }
 
         }
 
         stage ('Build'){
+            steps{
+                
+            }
 
         }
     }
