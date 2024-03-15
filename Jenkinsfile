@@ -52,7 +52,7 @@ pipeline {
         stage ('🔨Build'){
             steps{
                 script {
-                    echo ('hola')
+                    echo ('hols')
                     sh ("docker image build -f ./dockerfile -t service:latest .")
                 }
                 
