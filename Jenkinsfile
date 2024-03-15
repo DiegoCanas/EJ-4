@@ -53,7 +53,7 @@ pipeline {
             steps{
                 script {
                     echo ('hola')
-                    sh ("docker image build -f ./dockerfile -t service:latest")
+                    sh ("docker image build -f ./dockerfile -t service:latest .")
                 }
                 
             }
@@ -63,7 +63,7 @@ pipeline {
         stage ('Creación de la imagen docker'){
             steps{
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" .
                 }
             }
         }
