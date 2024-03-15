@@ -28,14 +28,14 @@ pipeline {
 
         stage ('🥽Linteo'){
             steps{
-                echo("hola")
+                echo("Linting...")
             }
 
         }
 
         stage ('🧪Test'){
             steps{
-                echo("hola")
+                sh 'npm test'
             }
 
         }
