@@ -3,7 +3,12 @@ pipeline {
     stages {
         stage ('Checkout'){
             steps{
-                git 'Url al repo'
+                script{
+                    checkout([$class: 'GitSCM', 
+                        branches: [[name: '*/main']], 
+                        userRemoteConfigs: [[credentialsId: 'MD-TOKEN', url: 'https://github.com/DiegoCanas/EJ-1']]])
+                }
+               
             }
         }
 
