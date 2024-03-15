@@ -16,21 +16,21 @@ pipeline {
 
         stage ('Linteo'){
             steps{
-
+                echo("hola")
             }
 
         }
 
         stage ('Test'){
             steps{
-
+                echo("hola")
             }
 
         }
 
         stage ('Build'){
             steps{
-                
+                echo("hola")
             }
 
         }
