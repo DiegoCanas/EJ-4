@@ -38,7 +38,6 @@ pipeline {
         stage ('🥽Linteo'){
             steps{
                 echo("Linting...")
-                sh('whoami')
             }
 
         }
