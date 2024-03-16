@@ -19,6 +19,7 @@ pipeline {
                     checkout([$class: 'GitSCM', 
                         branches: [[name: '*/main']], 
                         userRemoteConfigs: [[credentialsId: 'MD-TOKEN', url: 'https://github.com/DiegoCanas/EJ-1']]])
+                        // AÑADIR EL TOKEN
                 }
                
             }
@@ -53,7 +54,6 @@ pipeline {
             steps{
                 script {
                     echo ('hols')
-                    //sh ("docker image build -f ./dockerfile -t service:latest .")
                 }
                 
             }
@@ -63,7 +63,7 @@ pipeline {
         stage ('Creación de la imagen docker'){
             steps{
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    dockerImage = docker.build registry
                 }
             }
         }
@@ -72,10 +72,16 @@ pipeline {
             steps{
                 script {
                     docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push()
+                    dockerImage.push(latest)
                     }
                 }
             }
+        }
+
+        stage ('Limpieza') {
+            steps{
+                cleanWS()
+            }   
         }
     }
 }
