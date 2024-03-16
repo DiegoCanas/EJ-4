@@ -81,7 +81,7 @@ pipeline {
 
         stage ('Limpieza') {
             steps{
-                cleanWS()
+                //cleanWS()
             }   
         }
     }
