@@ -82,6 +82,7 @@ pipeline {
         stage ('Despliegue'){
             steps{
                 script{
+                    sh('minikube ssh')
                     sh('kubectl create namespace namespace-server')
                     sh('kubectl get namespaces') 
                     sh('kubectl apply -f service.yaml --namespace=namespace-server')
