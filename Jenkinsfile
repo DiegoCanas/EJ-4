@@ -79,6 +79,19 @@ pipeline {
             }
         }
 
+        stage ('Despliegue'){
+            steps{
+                script{
+                    sh('kubectl create namespace namespace-server')
+                    sh('kubectl get namespaces') 
+                    sh('kubectl apply -f service.yaml --namespace=namespace-server')
+                    sh('kubectl apply -f deployment.yaml --namespace=namespace-server')
+                    sh('kubectl get pods --namespace=namespace-server')
+
+                }
+            }
+        }
+
         stage ('Limpieza') {
             steps{
                 echo ('hols')
