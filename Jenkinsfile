@@ -82,7 +82,7 @@ pipeline {
         stage ('Despliegue'){
             steps{
                 script{
-                    sh('minikube start')
+                    sh('minikube start --driver=docker')
                     sh('kubectl create namespace namespace-server')
                     sh('kubectl get namespaces') 
                     sh('kubectl apply -f service.yaml --namespace=namespace-server')
