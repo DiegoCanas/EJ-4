@@ -60,7 +60,7 @@ pipeline {
 
         }
 
-        stage ('Creación de la imagen docker'){
+        stage ('🪄Creación de la imagen docker'){
             steps{
                 script {
                     dockerImage = docker.build registry
@@ -68,7 +68,7 @@ pipeline {
             }
         }
 
-        stage ('Subida de la imagen al registry'){
+        stage ('⬆️Subida de la imagen al registry'){
             steps{
                 script {
                     docker.withRegistry( '', registryCredential ) {
@@ -79,7 +79,7 @@ pipeline {
             }
         }
 
-        stage ('Despliegue'){
+        stage ('✈️Despliegue'){
             steps{
                 script{
                     kubeconfig(credentialsId: 'kubeconfig') {
@@ -87,21 +87,14 @@ pipeline {
                     sh 'kubectl apply -f deployment.yaml --namespace=namespace-server'
                     sh 'kubectl get pods --namespace=namespace-server'
 
+                    }
                 }
             }
         }
-
-        stage ('Limpieza') {
-            steps{
-                echo ('hols')
-                //cleanWS()
-            }   
-        }
-    }
-
-    post {
-        always{
-            cleanWs()
+        post {
+            always{
+                cleanWs()
+            }
         }
     }
 }
