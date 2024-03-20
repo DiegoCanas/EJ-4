@@ -1,0 +1,27 @@
+EJ-4
+
+*Se adjuntaran pruebas de su funcionamiento
+
+APP
+- La aplicación es la misma que la usada en el EJ-1 pero en este caso se conecta con la base de datos e interactua con ella.
+- Esta aplicación se dockeriza y de pushea a dockerhub para que posteriormente el deployment pueda obtener la imagen de la aplicación.
+- Exponemos la aplicacion mediante un service.yaml (Posteriormente accederemos a el mediante un portforwar para poder visualizarlo en local como en el EJ-1)
+
+MySQL
+- Disponemos de 4 archivos .yaml para su despliegue:
+(El secreto para poder realizar las conexiones ha sido creado y aplicado. "mysql-secret.yaml")
+  - Deployment: Permite el despliegue de la base de datos
+  - Service: Mismo funcionamiento que el anterior
+Los dos siguientes son los más importantes, el PV y PVC.
+
+PV (Volumen Persistente) y PVC (Persistent Volumen Claim): Estos dos se ocupan de gestionar las solicitudes de almacenamiento y de almacenar los diferentes datos.
+
+Una vez hemos generado estos dos archivos, teniendo en cuenta el path solicitado /var/lib/mysql, aplicamos con el comando 'kubectl apply -f <nombre_del_archivo>.yaml' y 
+se despliega la base de datos.
+
+Resulta en un despliegue correcto con el pod en funcionamiento
+
+
+
+
+
