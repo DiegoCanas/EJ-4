@@ -7,7 +7,7 @@ const port = 8000;
 const connection = mysql.createConnection({
     host: "mysql",
     user: "root",
-    password: "",
+    password: "process.env.MYSQL-SECRET",
 });
 
 const requestListener = function (req, res) {
