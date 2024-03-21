@@ -21,7 +21,14 @@ se despliega la base de datos.
 
 Resulta en un despliegue correcto con el pod en funcionamiento
 
-
+Para el secreto el archivo era de esta forma:
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+type: Opaque
+data:
+  password: <password>
 
 
 
